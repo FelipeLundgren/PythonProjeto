@@ -1,14 +1,27 @@
 from produto import*
 from vendas import*
+from bancodedados import*
 class Sistema:
     def __init__(self):
-        self.produtos = []
+        self.bd = BancoDeDados()
         self.vendas = []
 
 
     def adicionar_produto(self,produto):
-        self.produtos.append(produto)
+        if not produto.nome or produto.quantidade < 0 or produto.preco <=0:
+            print('Dados do produto invalidos')
+            return None
+        comando = '''   
+            INSERT INTO produtos(nome,descricao,quantidade,preco)
+            VALUES (%s,%s,%s,%s)
+    '''
+        dados = (produto.nome,produto.descricao, produto.quantidade, produto.preco)   
     
+        self.bd.cursor.execute(comando,dados)
+        self.bd.conexao.commit()
+        novo_id = self.bd.cursor.lastrowid
+        print(f'Produto {produto.nome} adicionado com sucesso')
+
     def cadastrar_venda(self,venda):
         self.vendas.append(venda)
 

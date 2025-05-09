@@ -1,6 +1,6 @@
 produtos = []
 class Produto:
-    def __init__(self,id,nome,descricao,quantidade_disponivel,preco):
+    def __init__(self,nome,descricao,quantidade_disponivel,preco,id=None):
         self.id = id
         self.nome = nome
         self.descricao = descricao
