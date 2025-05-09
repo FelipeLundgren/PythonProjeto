@@ -1,6 +1,8 @@
 from sistema import*
 from produto import*
 from vendas import*
+from bancodedados import*
+
 op = ''
 sistema = Sistema()
 
