@@ -13,13 +13,13 @@ class BancoDeDados:
         self.cursor = self.conexao.cursor()
         print('Conexao estabelecida')
         self.criar_tabelas()
-        
+
     def criar_tabelas(self):
         comando_criar_produtos = '''
             CREATE TABLE IF NOT EXISTS produtos(   
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 nome VARCHAR (255) NOT NULL,
-                descriçao TEXT,
+                descricao TEXT,
                 quantidade INT NOT NULL,
                 preco DECIMAL(10,2)NOT NULL
             )

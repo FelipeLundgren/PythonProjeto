@@ -18,11 +18,11 @@ while True:
     op = int(input('Digite uma opção: '))
     if op == 1:
         item = Produto(
-            #id = int(input('Digite o id do novo produto: ')),
             input('Digite o nome do produto: '),
             input('Digite a descrição do produto:'),
             int(input('Digite a quantidade disponivel: ')),
-            float(input('Digite o valor do produto: ')))
+            float(input('Digite o valor do produto: '))
+            )
         sistema.adicionar_produto(item)
     elif op == 2:
         venda = Vendas(
@@ -34,13 +34,15 @@ while True:
         print(venda)
         sistema.cadastrar_venda(venda)
     elif op == 3:
+
         produtos = sistema.listar_produtos()
-        print(f'ID: {produtos.id}')
-        print(f'Nome: {produtos.nome}')
-        print(f'Descricao: {produtos.descricao}')
-        print(f'Quantidade: {produtos.quantidade}')
-        print(f'Preco: {produtos.preco}')
-        print(f'--------------------------------')
+        for produto in produtos:
+            print(f'ID: {produto.id}')
+            print(f'Nome: {produto.nome}')
+            print(f'Descricao: {produto.descricao}')
+            print(f'Quantidade: {produto.quantidade}')
+            print(f'Preco: {produto.preco}')
+            print(f'--------------------------------')
     elif op == 4:
         sistema.listar_vendas()
 
