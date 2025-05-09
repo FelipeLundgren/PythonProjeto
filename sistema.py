@@ -26,13 +26,21 @@ class Sistema:
         self.vendas.append(venda)
 
     def listar_produtos(self):
-        for i in self.produtos:
-            print(f'''id: {i.id} \n
-                Nome: {i.nome}\n
-                Descricao: {i.descricao}\n
-                Quantidade disponivel: {i.quantidade_disponivel}\n
-                Preco do produto: {i.preco}
-                ''')
+        self.bd.cursor.execute('SELECT * FROM produtos')
+        produtos = []
+        for produto in self.bd.cursor.fetchall():
+            produtos.append(Produto(
+                id=produto[0],
+                nome=produto[1],
+                descricao=produto[2],
+                quantidade=[3],
+                preco=produto[4]
+            ))
+        if not produtos:
+            print('Nenhum produto cadastrado')
+        return produtos
+        
+
     def listar_vendas(self):
         for i in self.vendas:
              print(f'''ID venda: {i.id} \n
